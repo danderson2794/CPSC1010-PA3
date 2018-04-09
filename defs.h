@@ -3,6 +3,9 @@
 #include <string.h>
 
 
-// prototype:
-
+// prototypes in parse.c file:
 void parseHeader(int *row, int *col, FILE *ppmFile);
+void getImage(FILE *imageFile);
+
+
+int printMenu();

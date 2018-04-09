@@ -33,7 +33,7 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
     k++;
   }
 
-  i++; //incrememnts to skip the ' ' character. 
+  i++; //incrememnts to skip the ' ' character.
 
   while (header[i] != '\n' && header[i] != ' '){
     height[j] = header[i]; //This is parsing through the header array for height
@@ -45,4 +45,11 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
   *row = innerRow; // changing the value of our height and width in mainDriver.c
   sscanf(height, "%d", &innerCol);//same as above for both parts.
   *col = innerCol;
+  }
+
+void getImage(FILE *imageFile){
+
+
+
+
   }

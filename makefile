@@ -1,2 +1,2 @@
-lab11: 
-	gcc -Wall parse.c mainDriver.c defs.h
+lab11:
+	gcc -Wall parse.c mainDriver.c print.c defs.h 

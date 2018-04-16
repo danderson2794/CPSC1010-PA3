@@ -39,32 +39,30 @@ int main(int argc, char *argv[]) {
 
 	parseHeader(&width, &height, inputFile);//located in parse.c
 
-	printf("Height is %d width is %d\n\n", height, width);
+	//printf("Height is %d width is %d\n\n", height, width); //600 * 399
+	//img - 600 399 255
+	//image.ppm P6 600 399 255
 
 	rgb pixel[height][width];
-	/*int i = 0, j = 0;
-	for (i = 0; i < height; i++){
-		for(j = 0; j < width; j++){
-			printf("height value:%i  width value: %i\n", pixel[i][j]);
-		}
-	}*/
 
 	getImage(inputFile, &height, &width, pixel);
+	//printf("Height is %d and width is %d\n", height, width);
+	printImage(&height, &width, pixel);
+	//menuChoice = (int) printMenu();
 
-	menuChoice = (int) printMenu();
-
+	//if (menuChoice == 1){
+		//printImage(&height, &width, pixel);
+	//}
 	/*if (menuChoice == 2){
-		mirrorImage(pixel, height, width);
+		mirrorImage(&height, &width, pixel);
 	}
 	else if (menuChoice == 3){
-		flipHorizon(pixel, height, width);
+		flipHorizon(&height, &width, pixel);
 	}
 	else if (menuChoice == 4){
-		grayScale(pixel, height, width);
-	}
-	else if (menuChoice == 1){
-		printImage(pixel, height, width);
+		grayScale(&height, &width, pixel);
 	}*/
+
 
 	return 0;
 }

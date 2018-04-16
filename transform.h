@@ -3,9 +3,9 @@
 #include <string.h>
 
 typedef struct{
-  unsigned char red;
-  unsigned char green;
-  unsigned char blue;
+  unsigned char r;
+  unsigned char g;
+  unsigned char b;
 }rgb;
 
 
@@ -18,7 +18,7 @@ void getImage(FILE *imageFile, int *row, int *col, rgb array[][*col]);
 
 int printMenu();
 
-/*void mirrorImage( rgb array[*][int], int height, int width);
-void flipHorizon(rgb array[*][int], int height, int width);
-void grayScale(rgb array[*][int], int height, int width);
-void printImage(rgb array[*][int], int height, int width);*/
+//void mirrorImage(int *row, int *col, rgb array[][*col]);
+//void flipHorizon(int *row, int *col, rgb array[][*col]);
+//void grayScale(int *row, int *col, rgb array[][*col]);
+void printImage(int *row, int *col, rgb array[][*col]);

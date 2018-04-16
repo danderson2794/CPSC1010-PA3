@@ -41,27 +41,28 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
     j++;
   }
 
-  sscanf(width, "%d", &innerRow);//converts char width array to int array
-  *row = innerRow; // changing the value of our height and width in mainDriver.c
-  sscanf(height, "%d", &innerCol);//same as above for both parts.
-  *col = innerCol;
+  sscanf(width, "%d", &innerCol);//converts char width array to int array
+  *col = innerCol; // changing the value of our height and width in mainDriver.c
+  sscanf(height, "%d", &innerRow);//same as above for both parts.
+  *row = innerRow;
   }
 
 void getImage(FILE *imageFile, int *row, int *col, rgb array[][*col]){
-  int i = 0, j = 0, k = 0, m = 0;
-  char pixelData[255], height[4], width[4];
-  unsigned char innerRow[4], innerCol[4];
+  int i = 0, j = 0;
+  char pixelData[100];
 
-  fgets(pixelData, 255, imageFile);
+  fgets(pixelData, 100, imageFile);
   if (pixelData[0] == '#')
-    fgets(pixelData, 255, imageFile);
+    fgets(pixelData, 100, imageFile);
   if (pixelData[0] == '2')
-    fgets(pixelData, 255, imageFile);
-  printf("pixelData is :%s\n", pixelData);
+    fgets(pixelData, 100, imageFile);
+    //printf("%s \n", pixelData);
+
   for (i = 0; i < *row; i++){
     for (j = 0; j < *col; j++){
-          fscanf(imageFile, "%d", array[i][j].red);
-          printf("red is %s\n", array[i][j].red);
+        array[i][j].r = fgetc(imageFile);
+        array[i][j].g = fgetc(imageFile);
+        array[i][j].b = fgetc(imageFile);
         }
 
 

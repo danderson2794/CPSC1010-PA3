@@ -8,7 +8,7 @@
 		This function takes in the ppm file and parses through header for the
     width and height of the image.
 ------------------------------------------------------------------------------*/
-#include "defs.h"
+#include "transform.h"
 
 void parseHeader(int *row, int *col, FILE *ppmFile){
   int i = 0, j = 0, k = 0, innerRow = 0, innerCol = 0;
@@ -47,9 +47,41 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
   *col = innerCol;
   }
 
-void getImage(FILE *imageFile){
+void getImage(FILE *imageFile, int *row, int *col, rgb array[][*col]){
+  int i = 0, j = 0, k = 0, m = 0;
+  char pixelData[255], height[4], width[4];
+  unsigned char innerRow[4], innerCol[4];
+
+  fgets(pixelData, 255, imageFile);
+  if (pixelData[0] == '#')
+    fgets(pixelData, 255, imageFile);
+  if (pixelData[0] == '2')
+    fgets(pixelData, 255, imageFile);
+  printf("pixelData is :%s\n", pixelData);
+  for (i = 0; i < *row; i++){
+    for (j = 0; j < *col; j++){
+          fscanf(imageFile, "%d", array[i][j].red);
+          printf("red is %s\n", array[i][j].red);
+        }
 
 
 
 
+
+        //array[i][j].red = pixelData[m];
+        //m++;
+        //printf("Red: %s\n", array[i][j].red);
+      //}
+      /*
+      m++;
+      while (pixelData[m] != ' '){
+        array[i][j].green = pixelData[m];
+        m++;
+      }
+      m++;
+      while (pixelData[m] != ' ' && pixelData[m] != '\n'){
+        array[i][j].blue = pixelData[m];
+        m++;
+      }*/
+    }
   }

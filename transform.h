@@ -2,20 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct{
+  unsigned char red;
+  unsigned char green;
+  unsigned char blue;
+}rgb;
+
+
 
 // prototypes in parse.c file:
 void parseHeader(int *row, int *col, FILE *ppmFile);
-void getImage(FILE *imageFile);
 
-//pixel
-  typedef struct{
-    unsigned char red;
-    unsigned char green;
-    unsigned char blue;
-  }rgb;
+void getImage(FILE *imageFile, int *row, int *col, rgb array[][*col]);
+
 
 int printMenu();
 
-mirrorImage(struct *);
-flipHorizon(struct *);
-grayScale(struct *);
+/*void mirrorImage( rgb array[*][int], int height, int width);
+void flipHorizon(rgb array[*][int], int height, int width);
+void grayScale(rgb array[*][int], int height, int width);
+void printImage(rgb array[*][int], int height, int width);*/

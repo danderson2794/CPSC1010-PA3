@@ -11,7 +11,7 @@
 
 		Makefile only has one argument and it's to compile the program
 ------------------------------------------------------------------------------*/
-#include "defs.h"
+#include "transform.h"
 
 int main(int argc, char *argv[]) {
 	int width = 20, height = 20, menuChoice = 0;
@@ -39,11 +39,32 @@ int main(int argc, char *argv[]) {
 
 	parseHeader(&width, &height, inputFile);//located in parse.c
 
-	//FIXME 2D array needs to be declared.
+	printf("Height is %d width is %d\n\n", height, width);
 
-	getImage(inputFile); //located in parse.c
+	rgb pixel[height][width];
+	/*int i = 0, j = 0;
+	for (i = 0; i < height; i++){
+		for(j = 0; j < width; j++){
+			printf("height value:%i  width value: %i\n", pixel[i][j]);
+		}
+	}*/
+
+	getImage(inputFile, &height, &width, pixel);
 
 	menuChoice = (int) printMenu();
+
+	/*if (menuChoice == 2){
+		mirrorImage(pixel, height, width);
+	}
+	else if (menuChoice == 3){
+		flipHorizon(pixel, height, width);
+	}
+	else if (menuChoice == 4){
+		grayScale(pixel, height, width);
+	}
+	else if (menuChoice == 1){
+		printImage(pixel, height, width);
+	}*/
 
 	return 0;
 }

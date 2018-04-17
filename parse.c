@@ -47,42 +47,39 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
   *row = innerRow;
   }
 
-void getImage(FILE *imageFile, int *row, int *col, rgb array[][*col]){
-  int i = 0, j = 0;
-  char pixelData[100];
+void getImage(FILE *imageFile, int *row, int *col, rgb array[*row][*col]){
+  int i = 0, j = 0, headerItems = 0;
+  char pixelData[256];
 
-  fgets(pixelData, 100, imageFile);
-  if (pixelData[0] == '#')
-    fgets(pixelData, 100, imageFile);
-  if (pixelData[0] == '2')
-    fgets(pixelData, 100, imageFile);
-    //printf("%s \n", pixelData);
 
+  fgets(pixelData, 256, imageFile);
+
+
+  do {
+    if (pixelData[i] == '#'){
+      fgets(pixelData, 256, imageFile);
+      i = 0;
+    }
+    else {
+      while (pixelData[i] != ' ' && pixelData[i] != '\n'){
+        i++;
+      }
+      headerItems++;
+      if (pixelData[i] == ' '){
+        i++;
+        }
+      else if (pixelData[i] == '\n' && headerItems != 4){
+        fgets(pixelData, 256, imageFile);
+        i = 0;
+      }
+    }
+  } while(headerItems < 4);
+  
   for (i = 0; i < *row; i++){
     for (j = 0; j < *col; j++){
-        array[i][j].r = fgetc(imageFile);
-        array[i][j].g = fgetc(imageFile);
-        array[i][j].b = fgetc(imageFile);
-        }
-
-
-
-
-
-        //array[i][j].red = pixelData[m];
-        //m++;
-        //printf("Red: %s\n", array[i][j].red);
-      //}
-      /*
-      m++;
-      while (pixelData[m] != ' '){
-        array[i][j].green = pixelData[m];
-        m++;
+        array[i][j].r = getc(imageFile);
+        array[i][j].g = getc(imageFile);
+        array[i][j].b = getc(imageFile);
       }
-      m++;
-      while (pixelData[m] != ' ' && pixelData[m] != '\n'){
-        array[i][j].blue = pixelData[m];
-        m++;
-      }*/
-    }
   }
+}

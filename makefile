@@ -3,3 +3,9 @@ PA3:
 
 run:
 	./a.out tiger.ppm
+
+test:
+	@./a.out tiger.ppm > img1.ppm
+	./a.out twoTigers.ppm > img2.ppm
+	./a.out image.ppm > img3.ppm
+	./a.out julia.ppm > img4.ppm

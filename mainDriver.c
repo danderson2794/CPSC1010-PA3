@@ -14,7 +14,7 @@
 #include "transform.h"
 
 int main(int argc, char *argv[]) {
-	int width = 20, height = 20, menuChoice = 0;
+	int width = 20, height = 20; //menuChoice = 0;
 	FILE *inputFile;
 
 	/* if user only types the executable name and no other arguments,
@@ -39,14 +39,12 @@ int main(int argc, char *argv[]) {
 
 	parseHeader(&width, &height, inputFile);//located in parse.c
 
-	//printf("Height is %d width is %d\n\n", height, width); //600 * 399
-	//img - 600 399 255
-	//image.ppm P6 600 399 255
-
 	rgb pixel[height][width];
 
+	inputFile = fopen(argv[1], "r");//FIXME: ask professor about this.
+
 	getImage(inputFile, &height, &width, pixel);
-	//printf("Height is %d and width is %d\n", height, width);
+
 	printImage(&height, &width, pixel);
 	//menuChoice = (int) printMenu();
 

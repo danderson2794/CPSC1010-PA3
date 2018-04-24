@@ -14,7 +14,7 @@
 #include "transform.h"
 
 int main(int argc, char *argv[]) {
-	int width = 20, height = 20; //menuChoice = 0;
+	int width = 20, height = 20;// menuChoice = 0;
 	FILE *inputFile;
 
 	/* if user only types the executable name and no other arguments,
@@ -41,20 +41,25 @@ int main(int argc, char *argv[]) {
 
 	rgb pixel[height][width];
 
-	inputFile = fopen(argv[1], "r");//FIXME: ask professor about this.
+	inputFile = fopen(argv[1], "r");
 
-	getImage(inputFile, &height, &width, pixel);
+	getImage(inputFile, height, width, pixel);
 
-	printImage(&height, &width, pixel);
 	//menuChoice = (int) printMenu();
-
+	printHeader(height, width);
+	//printImage(&height, &width, pixel);
+	grayScale(height, width, pixel);
+	//flipHorizon(&height, &width, pixel);
 	//if (menuChoice == 1){
-		//printImage(&height, &width, pixel);
+	//mirrorImage(height, width, pixel);
+
+	//printImage(&height, &width, pixel);
 	//}
 	/*if (menuChoice == 2){
-		mirrorImage(&height, &width, pixel);
-	}
-	else if (menuChoice == 3){
+
+
+	}*/
+	/*else if (menuChoice == 3){
 		flipHorizon(&height, &width, pixel);
 	}
 	else if (menuChoice == 4){

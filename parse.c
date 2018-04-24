@@ -47,7 +47,7 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
   *row = innerRow;
   }
 
-void getImage(FILE *imageFile, int *row, int *col, rgb array[*row][*col]){
+void getImage(FILE *imageFile, int row, int col, rgb array[row][col]){
   int i = 0, j = 0, headerItems = 0;
   char pixelData[256];
 
@@ -74,12 +74,12 @@ void getImage(FILE *imageFile, int *row, int *col, rgb array[*row][*col]){
       }
     }
   } while(headerItems < 4);
-  
-  for (i = 0; i < *row; i++){
-    for (j = 0; j < *col; j++){
-        array[i][j].r = getc(imageFile);
-        array[i][j].g = getc(imageFile);
-        array[i][j].b = getc(imageFile);
+
+  for (i = 0; i < row; i++){
+    for (j = 0; j < col; j++){
+        array[i][j].r = fgetc(imageFile);
+        array[i][j].g = fgetc(imageFile);
+        array[i][j].b = fgetc(imageFile);
       }
   }
 }

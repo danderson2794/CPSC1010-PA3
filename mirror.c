@@ -1,3 +1,14 @@
+/*  ---------------------------------------------------------------------------
+    Damion Anderson
+    25 April, 2018
+    CSPC1010 - Section 002
+    PA3
+
+		Function Description:
+		This function will mirror the image by take the last pixel in the row and
+    switching it with the first.
+------------------------------------------------------------------------------*/
+
 #include "transform.h"
 
 void mirrorImage(int row, int col, rgb array[row][col]){
@@ -15,15 +26,6 @@ void mirrorImage(int row, int col, rgb array[row][col]){
       count++;
     }
   }
-
-  /*for (i = 0; i < row; i++){
-    n = col - 1, m = 0;
-    for (j = 0; j < col; j++){
-      array[i][j] = temp[i][j];
-      n--, m++;
-    }
-  }*/
-
 
   printImage(row, col, array);
 }

@@ -1,12 +1,14 @@
 /*  ---------------------------------------------------------------------------
     Damion Anderson
-    6 April, 2018
-    CSPC1011 - Section 002
-    Lab 11
+    25 April, 2018
+    CSPC1010 - Section 002
+    PA3
 
 		Function Description:
 		This function takes in the ppm file and parses through header for the
     width and height of the image.
+
+    The second portion scans through the ppm file for binary pixel data.
 ------------------------------------------------------------------------------*/
 #include "transform.h"
 
@@ -43,17 +45,24 @@ void parseHeader(int *row, int *col, FILE *ppmFile){
 
   sscanf(width, "%d", &innerCol);//converts char width array to int array
   *col = innerCol; // changing the value of our height and width in mainDriver.c
+
   sscanf(height, "%d", &innerRow);//same as above for both parts.
   *row = innerRow;
+
   }
 
+
+/*----------------------- getImage -------------------------------------------*/
+
+
 void getImage(FILE *imageFile, int row, int col, rgb array[row][col]){
-  int i = 0, j = 0, headerItems = 0;
+  int i = 0, headerItems = 0;
   char pixelData[256];
 
-
   fgets(pixelData, 256, imageFile);
-
+//I was getting inconsistent errors, so I had to reopen the file and reparse
+//through the header for consistency. This do-while loop does just that and
+//stops at 255\n.
 
   do {
     if (pixelData[i] == '#'){
@@ -75,11 +84,5 @@ void getImage(FILE *imageFile, int row, int col, rgb array[row][col]){
     }
   } while(headerItems < 4);
 
-  for (i = 0; i < row; i++){
-    for (j = 0; j < col; j++){
-        array[i][j].r = fgetc(imageFile);
-        array[i][j].g = fgetc(imageFile);
-        array[i][j].b = fgetc(imageFile);
-      }
-  }
+  fread(array, row * col * 3, col, imageFile);//collects all binary pixel data.
 }

@@ -14,7 +14,8 @@
 #include "transform.h"
 
 int main(int argc, char *argv[]) {
-	int width = 20, height = 20;// menuChoice = 0;
+	int width = 20, height = 20, menuChoice = 0;
+
 	FILE *inputFile;
 
 	/* if user only types the executable name and no other arguments,
@@ -37,7 +38,8 @@ int main(int argc, char *argv[]) {
 		 see the parse.c file for more information. */
 
 
-	parseHeader(&width, &height, inputFile);//located in parse.c
+	parseHeader(&height, &width, inputFile);//located in parse.c
+
 
 	rgb pixel[height][width];
 
@@ -45,26 +47,23 @@ int main(int argc, char *argv[]) {
 
 	getImage(inputFile, height, width, pixel);
 
-	//menuChoice = (int) printMenu();
+	menuChoice = (int) printMenu();
 	printHeader(height, width);
-	//printImage(&height, &width, pixel);
-	grayScale(height, width, pixel);
-	//flipHorizon(&height, &width, pixel);
-	//if (menuChoice == 1){
-	//mirrorImage(height, width, pixel);
 
-	//printImage(&height, &width, pixel);
-	//}
-	/*if (menuChoice == 2){
+	if (menuChoice == 1){
+		printImage(height, width, pixel);
+	}
 
+	else if (menuChoice == 2){
+		mirrorImage(height, width, pixel);
 
-	}*/
-	/*else if (menuChoice == 3){
-		flipHorizon(&height, &width, pixel);
+	}
+	else if (menuChoice == 3){
+		flipHorizon(height, width, pixel);
 	}
 	else if (menuChoice == 4){
-		grayScale(&height, &width, pixel);
-	}*/
+		grayScale(height, width, pixel);
+	}
 
 
 	return 0;

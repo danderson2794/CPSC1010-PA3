@@ -6,3 +6,6 @@ run:
 
 test:
 	@./a.out tiger.ppm > test.ppm
+	./a.out mcfaddin_1.ppm > test0.ppm
+	./a.out sage_1.ppm > test1.ppm
+	./a.out start_1.ppm > test4.ppm

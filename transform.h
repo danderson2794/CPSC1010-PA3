@@ -3,16 +3,13 @@
 #include <string.h>
 
 typedef struct{
-  unsigned char r;
-  unsigned char g;
-  unsigned char b;
+  unsigned char r, g, b;
 }rgb;
 
 
 
 // prototypes in parse.c file:
 void parseHeader(int *row, int *col, FILE *ppmFile);
-
 void getImage(FILE *imageFile, int row, int col, rgb array[][col]);
 void printHeader(int row, int col);
 
